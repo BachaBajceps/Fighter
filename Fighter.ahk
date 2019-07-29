@@ -1,6 +1,6 @@
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 #SingleInstance force ;
-    #InstallMouseHook ;
+#InstallMouseHook ;
 #InstallKeybdHook ;
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
@@ -30,14 +30,14 @@ Gui, Add, Text, +Center w200 ca1a1a1, Predkosc Klikania ;
 Gui, Add, Radio, gSubmitAll vLewy Checked Group x20 , Lewy ; 
 Gui, Add, Radio, gSubmitAll vPrawy x120 yp, Prawy ;
 
-Gui, Add, Text,y100 x20 , Wlanczanie: ;
-Gui, Add, Hotkey,yp x70 gskroty vBicie_HK, L  ;add a hotkey control
-Gui, Add, Text, x20 , Kilof: ;
-Gui, Add, Hotkey,yp x70 gskroty vKilof_HK, F ; 
-Gui, Add, Text, x20 , Wedka: ;
-Gui, Add, Hotkey,yp x70 gskroty vWedka_HK, V ;
+Gui, Add, Text,y100 x15 , Wlanczanie: ;
+Gui, Add, Hotkey,yp x80 gskroty vBicie_HK, L  ;add a hotkey control
+Gui, Add, Text, x15 , Kilof: ;
+Gui, Add, Hotkey,yp x80 gskroty vKilof_HK, F ; 
+Gui, Add, Text, x15 , Wedka: ;
+Gui, Add, Hotkey,yp x80 gskroty vWedka_HK, V ;
 
-Gui, Add, Edit, limit1 -Wrap x5 w20 vSlot0 gSubmitAll,
+Gui, Add, Edit, limit1 -Wrap x5 y185 w20 vSlot0 gSubmitAll,
 Gui, Add, Edit, limit1 -Wrap x30  w20 yp vSlot1 gSubmitAll,
 Gui, Add, Edit, limit1 -Wrap x55  w20 yp vSlot2 gSubmitAll,
 Gui, Add, Edit, limit1 -Wrap x80  w20 yp vSlot3 gSubmitAll,
@@ -47,12 +47,15 @@ Gui, Add, Edit, limit1 -Wrap x155  w20 yp vSlot6 gSubmitAll,
 Gui, Add, Edit, limit1 -Wrap x180  w20 yp vSlot7 gSubmitAll,
 Gui, Add, Edit, limit1 -Wrap x205  w20 yp vSlot8 gSubmitAll,
 
+Gui, Add, Button, x15 y220 w200 gUpdate, Aktualizuj ;
+Gui, Add, Button, x120 y250 w100 gPomoc, POMOC ;
+
 Gui, Font, s7 ;
-Gui, Add, Text,y270 x120 ca1a1a1  , Pajacuwa Fighter ;
-Gui, Add, Text,y300 x120 ca1a1a1  , Autor Bacha_Bajceps ;
+Gui, Add, Text,y290 x130 ca1a1a1  , Pajacuwa Fighter ;
+Gui, Add, Text,y310 x120 ca1a1a1  , Autor Bacha_Bajceps ;
 Gui, Font, s9 ;
 
-Gui, Show, xCenter yCenter w250 h600 , Pajacuwa Fighter ;
+Gui, Show, xCenter yCenter w230 h370 , Pajacuwa Fighter ;
 Goto, skroty ; 
 ;--Funkcje--
 
@@ -246,7 +249,7 @@ Start:
     {
         ToolTip, Autocliker: Aktywowany ;
     }else{
-            ToolTip, Autocliker: Dezaktywowany ;
+        ToolTip, Autocliker: Dezaktywowany ;
     }
     While, toggle = true && Okno != "Pajacuwa Fighter"
     {
@@ -262,11 +265,11 @@ Start:
             Sleep, (1000/ClickSpeed) ;
         }
     }
-
+    
 Return
 
 RemoveToolTip:
-ToolTip
+    ToolTip
 return
 
 #MaxThreadsPerHotkey 2 ;
@@ -285,15 +288,23 @@ Kilof:
 Return
 
 Wedka:
-WinGetActiveTitle, Okno ;
-if(Okno != "Pajacuwa Fighter") 
-{
-    Send, %wedka_s% ;
-    Sleep 30 ;
-    Click, Right ;
-    Sleep, 240 ;
-    Send, %miecz_s% ;
-}
+    WinGetActiveTitle, Okno ;
+    if(Okno != "Pajacuwa Fighter") 
+    {
+        Send, %wedka_s% ;
+        Sleep 30 ;
+        Click, Right ;
+        Sleep, 240 ;
+        Send, %miecz_s% ;
+    }
+return
+
+Update:
+    Run https://github.com/BachaBajceps/Fighter/releases ;
+return
+
+Pomoc:
+    Run https://github.com/BachaBajceps/Fighter/wiki/Pomoc ;
 return
 
 GuiClose:
