@@ -1,13 +1,13 @@
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 #SingleInstance force ;
-#InstallMouseHook ;
+    #InstallMouseHook ;
 #InstallKeybdHook ;
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 SetTitleMatchMode, 2 ;
 
 stop := false ;
-toggle := false ;
+toggle := true ;
 
 Kilof_s = 0 ;
 miecz_s = 0 ;
@@ -47,12 +47,22 @@ Gui, Add, Edit, limit1 -Wrap x155  w20 yp vSlot6 gSubmitAll,
 Gui, Add, Edit, limit1 -Wrap x180  w20 yp vSlot7 gSubmitAll,
 Gui, Add, Edit, limit1 -Wrap x205  w20 yp vSlot8 gSubmitAll,
 
-Gui, Add, Button, x15 y220 w200 gUpdate, Aktualizuj ;
-Gui, Add, Button, x120 y250 w100 gPomoc, POMOC ;
+Gui, Add, Text, x10 y207 ca1a1a1, 1 ;
+Gui, Add, Text, x35 ca1a1a1 yp, 2 ;
+Gui, Add, Text, x60 ca1a1a1 yp, 3 ;
+Gui, Add, Text, x85 ca1a1a1 yp, 4 ;
+Gui, Add, Text, x110 ca1a1a1 yp, 5 ;
+Gui, Add, Text, x135 ca1a1a1 yp, 6 ;
+Gui, Add, Text, x160 ca1a1a1 yp, 7 ;
+Gui, Add, Text, x185 ca1a1a1 yp, 8 ;
+Gui, Add, Text, x210 ca1a1a1 yp, 9 ;
+
+Gui, Add, Button, x15 y235 w200 gUpdate, Aktualizuj ;
+Gui, Add, Button, x120 y265 w100 gPomoc, POMOC ;
 
 Gui, Font, s7 ;
-Gui, Add, Text,y290 x130 ca1a1a1  , Pajacuwa Fighter ;
-Gui, Add, Text,y310 x120 ca1a1a1  , Autor Bacha_Bajceps ;
+Gui, Add, Text,y300 x130 ca1a1a1  , Pajacuwa Fighter ;
+Gui, Add, Text,y320 x120 ca1a1a1  , Autor Bacha_Bajceps ;
 Gui, Font, s9 ;
 
 Gui, Show, xCenter yCenter w230 h370 , Pajacuwa Fighter ;
@@ -251,6 +261,7 @@ Start:
     }else{
         ToolTip, Autocliker: Dezaktywowany ;
     }
+    
     While, toggle = true && Okno != "Pajacuwa Fighter"
     {
         If (Lewy = 1 && GetKeyState("LButton","P") && stop = 0)
