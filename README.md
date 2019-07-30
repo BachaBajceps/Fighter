@@ -11,5 +11,4 @@
 2. Wybierz bindy
 
 **Planowane Funkcje:**
-- instrukcja obsługi
 - zapisywanie ustawień
