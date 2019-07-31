@@ -258,8 +258,12 @@ Start:
     if(toggle = true) 
     {
         ToolTip, Autocliker: Aktywowany ;
+        Hotkey, %Kilof_HK%, Kilof, On ;
+        Hotkey, %Wedka_HK%, Wedka, On ;
     }else{
         ToolTip, Autocliker: Dezaktywowany ;
+        Hotkey, %Kilof_HK%, Kilof, Off ;
+        Hotkey, %Wedka_HK%, Wedka, Off ;
     }
     
     While, toggle = true && Okno != "Pajacuwa Fighter"
@@ -286,7 +290,7 @@ return
 #MaxThreadsPerHotkey 2 ;
 Kilof:
     WinGetActiveTitle, Okno ;
-    if(Okno != "Pajacuwa Fighter") 
+    if(Okno != "Pajacuwa Fighter" && toggle = true) 
     {
         stop := !stop ;
         if(stop = true) 
@@ -300,7 +304,7 @@ Return
 
 Wedka:
     WinGetActiveTitle, Okno ;
-    if(Okno != "Pajacuwa Fighter") 
+    if(Okno != "Pajacuwa Fighter" && toggle = true) 
     {
         Send, %wedka_s% ;
         Sleep 30 ;
@@ -320,5 +324,6 @@ return
 
 GuiClose:
     ExitApp
-    F9::ExitApp
+    
+F9::ExitApp
     
